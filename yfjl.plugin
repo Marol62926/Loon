@@ -1,0 +1,9 @@
+#!name=有份简历
+#!desc=版本 5.0
+
+[Script]
+http-response https://buy.itunes.apple.com/verifyReceipt script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/main/yfjl.js,requires-body=1,max-size=0
+
+[MITM]
+hostname = buy.itunes.apple.com
+

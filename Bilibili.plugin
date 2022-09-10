@@ -1,0 +1,18 @@
+#!name=Bilibili合集
+#!desc=Bilibili去广告、优化、自动转区
+
+
+[Script]
+# > Nobyda 横幅、黑名单
+http-response ^https:\/\/app\.bilibili\.com\/(search\/resource|x\/(resource\/show\/tab|v2\/(view|rank|feed|reply\/main|account\/mine))) script-path=https://raw.githubusercontent.com/Marol62926/MarScrpt/main/bilibili.js,requires-body=1,max-size=0
+# > 自动转区
+http-request ^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/x\/v\d\/search(\/type)?\?.+?%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)& script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
+
+# > app2amile 推荐广告、tab
+http-response ^https:\/\/app\.bilibili\.com\/x\/(v2\/(splash\/(list|show)|feed\/index\?)|resource\/show\/tab\/v2) script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-json.js,requires-body=1,max-size=0
+http-response ^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js,requires-body=1,max-size=0
+# > blackmatrix7
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/splash\/list script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/javascript/dc29cf91928fc9cd4f90ade43877ba13.js,requires-body=1
+
+[MITM]
+hostname = *.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com,app.bilibili.com, grpc.biliapi.net,ap?.bilibili.com, ap?.biliapi.net
